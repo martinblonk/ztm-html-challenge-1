@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Zero To Mastery HTML challenge secion5 Lecture 39 -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript">
+    function myFormSubmit() {
+      writeChoices();
+    }
+  </script>
+  <title>ZeroToMastery HTML Challenge</title>
+</head>
+
+<body>
+  <header>
+    <h1>What's the type of your BMW e39?</h1>
+    <h3>Enter your name and select your type an I'll show you a picture</h3>
+  </header>
+
+  <form id="theform" onsubmit="myFormSubmit();return false">
+    Enter your name: <input id="dname" type="text" name="dname" required><br><br>
+    What type of e39 do you drive? <br>
+    <input type="radio" value="5c" id="e39type" name="e39types" checked> 5 series coach<br>
+    <input type="radio" value="5t" id="e39type" name="e39types"> 5 series touring<br>
+    <input type="radio" value="m5" id="e39type" name="e39types"> M5<br>
+    <br>
+    <input type="submit">
+
+  </form>
+  <h1 id="dtext"></h1>
+  <br>
+  <img id="e39pic" src=" " width="600">
+  <br>
+
+  <footer>
+    <p><em>BMW e39 fansite</em></p>
+  </footer>
+  <!-- <script src="./resoures/js/main.js"></script> -->
+  <script type="text/javascript">
+    function writeChoices() {
+      var name = document.getElementById("dname").value;
+      // var type = document.getElementById("e39type").value;
+      var type = "";
+      // get checked redio
+      var radios = document.getElementsByName("e39types");
+      for (var i = 0, length = radios.length; i < length; i++) {
+        if (radios[i].checked) {
+          // do whatever you want with the checked radio
+          type = radios[i].value;
+
+          // only one radio can be logically checked, don't check the rest
+          break;
+        }
+      }
+
+      document.getElementById("dtext").innerHTML = "Hi " + name + "! See below the picture we found!";
+      document.getElementById("e39pic").src = "./resources/img/" + type + ".jpg";
+      // event.preventDefault;
+    }
+    function wait(ms) {
+      var start = new Date().getTime();
+      var end = start;
+      while (end < start + ms) {
+        end = new Date().getTime();
+      }
+
+
+    }
+  </script>
+</body>
+
+</html>
